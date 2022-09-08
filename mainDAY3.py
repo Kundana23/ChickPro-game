@@ -81,17 +81,14 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
 
 running = True
 while running:
-    #RGB= Red, Green, Blue
+    
     screen.fill((0,0,0))
 
-    #background image
     screen.blit(background,(0,0))
 
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
            running=False
-
-        #to check whether the key pressed is left or right
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 playerX_change = -1
