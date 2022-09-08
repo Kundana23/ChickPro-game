@@ -22,7 +22,7 @@ icon = pygame.image.load('chicken.png')
 pygame.display.set_icon(icon)
 
 #player
-playerImg = pygame.image.load('water-gun.png')
+playerImg = pygame.image.load('water-gun (1).png')
 playerX = 100
 playerY = 480
 playerX_change = 0
@@ -37,10 +37,10 @@ enemyY_change = []
 num_of_enemies = 10
 
 for i in range(num_of_enemies):
-    enemyImg.append(pygame.image.load('fox.png'))
+    enemyImg.append(pygame.image.load('fox (1).png'))
     enemyX.append(random.randint(0,736))
     enemyY.append(random.randint(0,150))
-    enemyX_change.append(0.1)
+    enemyX_change.append(0.2)
     enemyY_change.append(40)
 
 
@@ -57,10 +57,10 @@ bullet_state = "ready"
 
 #score
 score_value = 0
-font = pygame.font.Font('freesansbold.ttf', 32)
+font = pygame.font.Font('AlleniaRegular-Free.ttf', 32)
 
 #gameover
-over_font = pygame.font.Font('freesansbold.ttf', 64)
+over_font = pygame.font.Font('AlleniaRegular-Free.ttf', 64)
 
 textX = 10
 textY = 10
@@ -82,7 +82,7 @@ def enemy(x,y,i):
 def fire_bullet(x,y):
     global bullet_state
     bullet_state = "fire"
-    screen.blit(bulletImg,(x+16,y+10))
+    screen.blit(bulletImg,(x+40,y+10))
 
 def isCollision(enemyX, enemyY, bulletX, bulletY):
     distance = math.sqrt(math.pow(enemyX - bulletX, 2) + (math.pow(enemyY - bulletY, 2)))
@@ -121,7 +121,7 @@ while running:
                 playerX_change = 1
             if event.key == pygame.K_SPACE:
                 if bullet_state == "ready":
-                    bulletSound = mixer.Sound("laser.wav")
+                    bulletSound = mixer.Sound("balloonsound.wav.wav")
                     bulletSound.play()
                     bulletX = playerX
                     fire_bullet(bulletX,bulletY)
@@ -152,10 +152,10 @@ while running:
 
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
-            enemyX_change[i] = 0.1
+            enemyX_change[i] = 0.2
             enemyY[i] += enemyY_change[i]
         if enemyX[i] >= 736:
-            enemyX_change[i] = -0.1
+            enemyX_change[i] = -0.2
             enemyY[i] += enemyY_change[i]
     #collision
         collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
